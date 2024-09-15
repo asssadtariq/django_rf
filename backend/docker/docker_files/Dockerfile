@@ -5,7 +5,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 
 RUN set -e; \
     apt-get update ;\
-    apt-get -y install netcat ;\
+    apt-get -y install netcat-openbsd ;\
     apt-get -y install gettext ;
 
 RUN mkdir /code
@@ -13,7 +13,6 @@ COPY . /code/
 WORKDIR /code
 
 RUN set -e; \
-    /usr/local/bin/python -m pip install --upgrade pip ;\
     python -m pip install -r /code/requirements.txt ;\
     chmod +x /code/docker/entrypoints/entrypoint.sh ;
 
